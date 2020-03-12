@@ -31,11 +31,15 @@ export class ShippingCompanyCreationForm extends React.Component{
     render(){
         return(
             <div className="EntryForm">
-                <h1>Create A Shipping Company</h1>
+                <h1>Create a Shipping Company</h1>
                 <form>
-                    <label htmlFor="newName">Shipping Company Name</label><br/>
+                    
+                    <label htmlFor="newName">Shipping Company Name: </label><br/>
+                    
                     <input type="text" id="newName" name="newName" value={this.state.value} onChange={this.handleNameChange}/><br/>
-                    <label htmlFor="newDescription">Description</label><br/>
+                    
+                    <label htmlFor="newDescription">Description: </label><br/>
+                    
                     <textarea id="newDescription" name="newDescription" value={this.state.value} onChange={this.handleDescriptionChange}/><br/>
             
                     <button type ="button" id="SubmitShippingCompany" value={this.state.value} onClick={this.handleSubmit}>Submit</button>
