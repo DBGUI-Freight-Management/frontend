@@ -44,6 +44,8 @@ main {
 
 main {
   text-align: center;
+  height:100%;
+  height:100vw;
 }
 
 main > {
@@ -55,7 +57,17 @@ main > {
   background-color: thistle;
   width:40%;
   border-radius: 1em;
+  position: relative;
+  top: 5em;
+  height: fit-content;
+  border: outset turquoise;
 }
 
+.EntryForm form {
+  margin-bottom: 1em;
+}
 
+.EntryForm form > *{
+  width: 20em;
+}
 

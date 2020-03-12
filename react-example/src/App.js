@@ -7,7 +7,7 @@ import {ShippingCompanyCreationForm} from "./ShipManager";
 function App() {
   return (
     <main>
-      {ShippingCompanyCreationForm()}
+      <ShippingCompanyCreationForm/>
     </main>
   );
 }
