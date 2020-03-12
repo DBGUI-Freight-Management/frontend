@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+
+main {
+  background-color: blue;
+}
+
+main {
+  text-align: center;
+}
+
+main > {
+  display: inline-block;
+}
+
+.EntryForm {
+  display: inline-block;
+  background-color: thistle;
+  width:40%;
+  border-radius: 1em;
+}
+
+
+
