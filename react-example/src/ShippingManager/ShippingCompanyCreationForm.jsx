@@ -11,6 +11,7 @@ export class ShippingCompanyCreationForm extends React.Component{
 
     submitCompany(){
         this.props.manager.addCompany(this.state.name,this.state.address,this.state.email,this.state.description);
+        this.setState({name:"", address:"", email:"", description:""});
     }
 
     render() {

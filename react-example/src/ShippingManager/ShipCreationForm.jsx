@@ -1,5 +1,4 @@
 import React from 'react';
-import { ShippingManager } from './models';
 
 export class ShipCreationForm extends React.Component{
     state = {
@@ -9,7 +8,7 @@ export class ShipCreationForm extends React.Component{
 
     submit(){
         if(this.state.name!=="" && this.state.owningCompany!==""){
-            this.props.manager.addShip(this.state.name,this.state.owningCompany);
+            this.setState({name:"", owningCompany:""});
         }
     }
 
