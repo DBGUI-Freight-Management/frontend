@@ -6,11 +6,11 @@ export class ShippingCompanyCreationForm extends React.Component{
         name:"",
         address:"",
         email:"",
-        description:""
+        description:"",
     }
 
     submitCompany(){
-        console.log(this.state);
+        this.props.manager.addCompany(this.state.name,this.state.address,this.state.email,this.state.description);
     }
 
     render() {
