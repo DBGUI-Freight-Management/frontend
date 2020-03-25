@@ -1,7 +1,10 @@
 
 export class Ship{
-    constructor(name, owningCompany){
+    constructor(name, owningCompany, status = "Just Created"){
         this.name=name;
         this.owningCompany=owningCompany;
+        this.status=status;
     }
+
+    
 }

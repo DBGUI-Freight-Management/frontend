@@ -21,12 +21,16 @@ export class ShippingManager{
         ]
     }
 
-    addCompany(name,address,email,description){
+    addNewCompany(name,address,email,description){
         this.companies.push(new Company(name,address,email,description));
     }
 
-    addShip(name, company){
-        this.companies.push(new Ship(name,company));
+    addCompany(company){
+        this.companies.push(company);
+    }
+
+    addShip(ship){
+        this.ships.push(ship);
     }
 
     
