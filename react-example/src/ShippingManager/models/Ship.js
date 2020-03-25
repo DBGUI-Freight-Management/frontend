@@ -4,4 +4,12 @@ export class Ship{
         this.name=name;
         this.owningCompany=owningCompany;
     }
+
+    getName(); {
+        return this.name;
+    }
+
+    getCompany() {
+        return this.owningCompany;
+    }
 }

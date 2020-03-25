@@ -26,9 +26,25 @@ export class ShippingManager{
     }
 
     addShip(name, company){
-        this.companies.push(new Ship(name,company));
+        this.ships.push(new Ship(name,company));
     }
 
+    removeShip(name, company) {
+        var index = this.findShipIndex(name, company);
+        this.ships.splice(index, 1); 
+    }
+
+    findShipIndex(name, company) {
+        //swap to filter later bc its better
+        var i;
+        for (i = 0; i < this.ships.length; i++) {
+            var n = this.ships[i].getName();
+            var c = this.ships[i].getCompanies();
+            if (n == name && c == company) {
+                return i;
+            }
+        }
+    }
     
     getCompanies(){
         return this.companies;
