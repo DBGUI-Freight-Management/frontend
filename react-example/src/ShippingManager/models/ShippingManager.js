@@ -7,7 +7,8 @@ export class ShippingManager{
         this.companies = [
             new Company("Trans-Atlantic", "1001 101st New York, New York 0000","trans@atlantic.com", "Best Shipping this side of the world"),
             new Company("Fiji Shipping","1 Island Blvd Oceanside Fiji", "contact@FijiShipping.com", "Outwit Outplay Outlast"),
-            new Company("Pacific Specifics", "1250 Manhattan Beach Blvd, CA 90266", "pacificspecifics@aol.com", "Best Shipping this side of the world")
+            new Company("Pacific Specifics", "1250 Manhattan Beach Blvd, CA 90266", "pacificspecifics@aol.com", "Best Shipping this side of the world"),
+            new Company("Kapital Shipping", "46 East Lawn, Charlotesville VA", "stephen@jackson.org", "Fastest Shipping around")
         ]
 
         this.ships=[
@@ -17,16 +18,24 @@ export class ShippingManager{
             new Ship("Pavarti", "Fiji Shipping"),
             new Ship("Tyson", "Fiji Shipping"),
             new Ship("Probst", "Fiji Shipping"),
-            new Ship("Narniphilous", "Pacific Specifics")
+            new Ship("Narniphilous", "Pacific Specifics"),
+            new Ship("SS Keystone", "Kapital Shipping")
         ]
     }
 
-    addCompany(name,address,email,description){
+    addNewCompany(name,address,email,description){
         this.companies.push(new Company(name,address,email,description));
     }
 
+
     addShip(name, company){
         this.ships.push(new Ship(name,company));
+    addCompany(company){
+        this.companies.push(company);
+    }
+
+    addShip(ship){
+        this.ships.push(ship);
     }
 
     removeShip(name, company) {

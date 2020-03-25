@@ -1,15 +1,17 @@
 import React from 'react';
+import { Ship } from './models';
 
 export class ShipCreationForm extends React.Component{
     state = {
         name:"",
         owningCompany:"",
+        shipStatus:""
     }
 
     submit(){
-        if(this.state.name!=="" && this.state.owningCompany!==""){
-            this.setState({name:"", owningCompany:""});
-        }
+            let newShip = new Ship(this.state.name,this.state.owningCompany,this.state.shipStatus);
+            this.setState({name:"", owningCompany:"", shipStatus:""});
+            this.props.addship(newShip);
     }
 
     render(){
@@ -32,7 +34,7 @@ export class ShipCreationForm extends React.Component{
                     </div>
                     <div className="form-group">
                         <label htmlFor="shippingCompany">
-                            ShippingCompany
+                            Shipping Company
                         </label>
                         <select className="form-control"
                                 id="shippingCompany"
@@ -40,8 +42,19 @@ export class ShipCreationForm extends React.Component{
                                 value={this.state.owningCompany}
                                 onChange={e=>this.setState({owningCompany:e.target.value})}>
                                     <option></option>
-                                {this.props.manager.getCompanies().map(company=>(<option>{company.name}</option>))}
+                                {this.props.companyList.map(company=>(<option>{company.name}</option>))}
                         </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="status">
+                            Ship Status
+                        </label>
+                        <input type="text"
+                                id="status"
+                                name="status"
+                                className="form-control"
+                                value={this.state.shipStatus}
+                                onChange={e=>this.setState({shipStatus:e.target.value})}/>
                     </div>
                     <div className="form-group">
                         <button type="button" className="btn btn-primary mb-2" onClick={e=>this.submit()}>Create</button>
