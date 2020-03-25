@@ -3,7 +3,6 @@ import './App.css';
 import { ShippingManagerPage } from './ShippingManager';
 
 
-
 function App() {
   return (
     <main>
