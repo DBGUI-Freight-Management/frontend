@@ -10,7 +10,7 @@ export class ShipCreationForm extends React.Component{
 
     submit(){
             let newShip = new Ship(this.state.name,this.state.owningCompany,this.state.shipStatus);
-            
+            this.setState({name:"", owningCompany:"", shipStatus:""});
             this.props.addship(newShip);
     }
 
