@@ -1,5 +1,6 @@
 import { Company } from "./Company";
 import { Ship } from "./Ship";
+import { Captain } from "./Captain";
 
 
 export class ShippingManager{
@@ -20,6 +21,11 @@ export class ShippingManager{
             new Ship("Probst", "Fiji Shipping"),
             new Ship("Narniphilous", "Pacific Specifics"),
             new Ship("SS Keystone", "Kapital Shipping")
+        ]
+
+        this.captains=[
+            new Captain("Steve", this.companies.find(company=>company.name==="Kapital Shipping")),
+            new Captain("Dave", this.companies.find(company=>company.name==="Pacific Specifics"))
         ]
     }
 
@@ -56,5 +62,11 @@ export class ShippingManager{
         return this.companies;
     }
 
-    
+    changeCaptainCompany(captain,company){
+        for(let i =0; i < this.captains.length;i++){
+            if(this.captains[i].name===captain.name){
+                this.captains[i].company=company;
+            }
+        }
+    }
 }
