@@ -7,10 +7,7 @@ export class ShipDeletionForm extends React.Component {
     }
 
     submit() {
-        this.props.manager.removeShip(this.state.name, this.state.owningCompany);
-        if (this.state.name !== "" && this.state.owningCompany !== "") {
-            this.setState({ name: "", owningCompany: "" });
-        }
+        this.props.removeShip({name:this.state.name, company:this.state.owningCompany})
     }
 
     render() {
@@ -41,7 +38,7 @@ export class ShipDeletionForm extends React.Component {
                             value={this.state.owningCompany}
                             onChange={e => this.setState({ owningCompany: e.target.value })}>
                             <option></option>
-                            {this.props.manager.getCompanies().map(company => (<option>{company.name}</option>))}
+                            {this.props.companyList.map(company => (<option>{company.name}</option>))}
                         </select>
                     </div>
                     <div className="form-group">
