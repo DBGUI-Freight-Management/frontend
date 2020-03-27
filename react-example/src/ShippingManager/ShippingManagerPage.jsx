@@ -5,6 +5,8 @@ import { ShipList } from "./ShipList"
 import { ShippingManager} from "./models"
 import { ShipDeletionForm } from "./ShipDeletionForm"
 import { CaptainCompanySelection } from "./CaptainCompanySelection"
+import { LogCreation } from "./LogCreation"
+import { AllLogView } from "./AllLogView"
 
 export class ShippingManagerPage extends React.Component{
     state={
@@ -42,6 +44,16 @@ export class ShippingManagerPage extends React.Component{
         this.setState({manager:mgr});
         console.log(this.state);
     }
+    addLogMessage(input){
+        let mgr=this.state.manager;
+        console.log(input);
+        let message={captain:mgr.captains[this.state.selectedCaptain],
+                    date:input.date,
+                    header:input.logHeader,
+                    message:input.logMessage}
+        mgr.addLogMessage(message);
+        this.setState({manager:mgr});
+    }
 
     render(){
         return (
@@ -65,6 +77,9 @@ export class ShippingManagerPage extends React.Component{
                         </div>
                 </div>
                 <CaptainCompanySelection captain={this.state.manager.captains[this.state.selectedCaptain].name} currentCompany={this.state.manager.captains[this.state.selectedCaptain].company} companyList={this.state.manager.companies} changeCompany={(c=> this.changeCaptainCompany(c))}/>
+                <AllLogView captain={this.state.manager.captains[this.state.selectedCaptain]} logs={this.state.manager.messages}/>
+                <LogCreation captain={this.state.manager.captains[this.state.selectedCaptain]} submit={input=>this.addLogMessage(input)}/>
+                
             </>
         )
     }

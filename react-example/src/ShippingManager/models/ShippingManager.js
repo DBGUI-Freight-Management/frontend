@@ -1,6 +1,7 @@
 import { Company } from "./Company";
 import { Ship } from "./Ship";
 import { Captain } from "./Captain";
+import { Log } from "./Log";
 
 
 export class ShippingManager{
@@ -26,6 +27,9 @@ export class ShippingManager{
         this.captains=[
             new Captain("Steve", this.companies.find(company=>company.name==="Kapital Shipping")),
             new Captain("Dave", this.companies.find(company=>company.name==="Pacific Specifics"))
+        ]
+
+        this.messages=[
         ]
     }
 
@@ -68,5 +72,9 @@ export class ShippingManager{
                 this.captains[i].company=company;
             }
         }
+    }
+
+    addLogMessage(message){
+        this.messages.push(new Log(message.captain, message.date, message.header, message.message));
     }
 }
