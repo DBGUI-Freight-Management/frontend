@@ -5,11 +5,15 @@ import { ShipList } from "./ShipList"
 import { ShippingManager} from "./models"
 import { ShipDeletionForm } from "./ShipDeletionForm"
 import { CaptainCompanySelection } from "./CaptainCompanySelection"
+import { LogCreation } from "./LogCreation"
+import { AllLogView } from "./AllLogView"
+import { LogMessage } from "./LogMessage"
 
 export class ShippingManagerPage extends React.Component{
     state={
         manager: new ShippingManager(),
-        selectedCaptain: 0
+        selectedCaptain: 0,
+        selectedMessage: undefined
     }
 
     addCompany(company){
@@ -42,6 +46,20 @@ export class ShippingManagerPage extends React.Component{
         this.setState({manager:mgr});
         console.log(this.state);
     }
+    addLogMessage(input){
+        let mgr=this.state.manager;
+        console.log(input);
+        let message={captain:mgr.captains[this.state.selectedCaptain],
+                    date:input.date,
+                    header:input.logHeader,
+                    message:input.logMessage}
+        mgr.addLogMessage(message);
+        this.setState({manager:mgr});
+    }
+
+    selectMessage(message){
+        this.setState({selectedMessage:this.state.manager.messages.findIndex(m=> m=== message)});
+    }
 
     render(){
         return (
@@ -65,6 +83,10 @@ export class ShippingManagerPage extends React.Component{
                         </div>
                 </div>
                 <CaptainCompanySelection captain={this.state.manager.captains[this.state.selectedCaptain].name} currentCompany={this.state.manager.captains[this.state.selectedCaptain].company} companyList={this.state.manager.companies} changeCompany={(c=> this.changeCaptainCompany(c))}/>
+                <AllLogView captain={this.state.manager.captains[this.state.selectedCaptain]} logs={this.state.manager.messages} selectMessage={message=>this.selectMessage(message)}/>
+                {this.state.selectedMessage!==undefined && <LogMessage log={this.state.manager.messages[this.state.selectedMessage]}/>}
+                <LogCreation captain={this.state.manager.captains[this.state.selectedCaptain]} submit={input=>this.addLogMessage(input)}/>
+                
             </>
         )
     }
