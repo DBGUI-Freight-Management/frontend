@@ -9,11 +9,9 @@ export class AllLogView extends React.Component{
                     <h3>{this.props.captain.name}'s Logs</h3>
                     <div className="container">
                         {this.props.logs.map(message=>(
-                                    <div className="row rounded">
+                                    <div className="row rounded" onClick={()=>this.props.selectMessage(message)}>
                                         <div className="col-8 rounded">
-
                                                 {message.header}
-                                            
                                         </div>    
                                         <div className="col-4 rounded">
                                                 {message.date.getMonth()+"/" +message.date.getDay()+"/"+message.date.getFullYear()}
