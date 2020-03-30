@@ -31,6 +31,7 @@ export class ShippingManager{
 
         this.messages=[
         ]
+
     }
 
     addNewCompany(name,address,email,description){

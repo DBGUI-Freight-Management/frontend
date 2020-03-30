@@ -7,3 +7,4 @@ export * from "./CaptainCompanySelection";
 export * from "./LogCreation"
 export * from "./AllLogView"
 export * from "./LogMessage"
+export * from "./ActiveShipsView"

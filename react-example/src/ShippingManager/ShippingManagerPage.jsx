@@ -2,12 +2,13 @@ import React from "react"
 import { ShippingCompanyCreationForm } from "./ShippingCompanyCreationForm"
 import { ShipCreationForm } from "./ShipCreationForm"
 import { ShipList } from "./ShipList"
-import { ShippingManager} from "./models"
+import { ShippingManager, Ship} from "./models"
 import { ShipDeletionForm } from "./ShipDeletionForm"
 import { CaptainCompanySelection } from "./CaptainCompanySelection"
 import { LogCreation } from "./LogCreation"
 import { AllLogView } from "./AllLogView"
 import { LogMessage } from "./LogMessage"
+import { ActiveShipsView } from "./ActiveShipsView"
 
 export class ShippingManagerPage extends React.Component{
     state={
@@ -61,6 +62,20 @@ export class ShippingManagerPage extends React.Component{
         this.setState({selectedMessage:this.state.manager.messages.findIndex(m=> m=== message)});
     }
 
+    getActiveShips(){
+        this.activeships=[
+            new Ship("Titanic","Fiji Shipping", "Active")
+        ]
+        
+        for(var i = 0; i < this.state.manager.ships.length; i++){
+            if(this.state.manager.ships[i].status === "Active"){
+                this.activeships.push(this.state.manager.ships[i]);
+            }
+        }
+        
+        return this.activeships;
+    }
+
     render(){
         return (
             <>
@@ -86,7 +101,7 @@ export class ShippingManagerPage extends React.Component{
                 <AllLogView captain={this.state.manager.captains[this.state.selectedCaptain]} logs={this.state.manager.messages} selectMessage={message=>this.selectMessage(message)}/>
                 {this.state.selectedMessage!==undefined && <LogMessage log={this.state.manager.messages[this.state.selectedMessage]}/>}
                 <LogCreation captain={this.state.manager.captains[this.state.selectedCaptain]} submit={input=>this.addLogMessage(input)}/>
-                
+                <ActiveShipsView activeships={this.getActiveShips()}/>
             </>
         )
     }
