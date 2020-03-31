@@ -9,6 +9,7 @@ import { LogCreation } from "./LogCreation"
 import { AllLogView } from "./AllLogView"
 import { LogMessage } from "./LogMessage"
 import { ActiveShipsView } from "./ActiveShipsView"
+import { TrackingPage } from "./TrackingPageView"
 
 export class ShippingManagerPage extends React.Component{
     state={
@@ -102,6 +103,7 @@ export class ShippingManagerPage extends React.Component{
                 {this.state.selectedMessage!==undefined && <LogMessage log={this.state.manager.messages[this.state.selectedMessage]}/>}
                 <LogCreation captain={this.state.manager.captains[this.state.selectedCaptain]} submit={input=>this.addLogMessage(input)}/>
                 <ActiveShipsView activeships={this.getActiveShips()}/>
+                <TrackingPage captain={this.state.manager.captains[this.state.selectedCaptain]} ships={this.state.manager.ships}/>
             </>
         )
     }
