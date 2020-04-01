@@ -10,6 +10,7 @@ import { AllLogView } from "./AllLogView"
 import { LogMessage } from "./LogMessage"
 import { ActiveShipsView } from "./ActiveShipsView"
 import { TrackingPage } from "./TrackingPageView"
+import { UpdateShipStatus } from "./UpdateShipStatus"
 
 export class ShippingManagerPage extends React.Component{
     state={
@@ -34,6 +35,12 @@ export class ShippingManagerPage extends React.Component{
         let mgr = this.state.manager;
         mgr.removeShip(name,company);
         this.setState(({manager:mgr}));
+    }
+
+    updateShipStatus(name, company, status) {
+        let mgr = this.state.manager;
+        mgr.updateShipStatus(name, company, status);
+        this.setState(({ manager: mgr }));
     }
 
     changeSelectedCaptain(captainName){
@@ -102,7 +109,8 @@ export class ShippingManagerPage extends React.Component{
                 <AllLogView captain={this.state.manager.captains[this.state.selectedCaptain]} logs={this.state.manager.messages} selectMessage={message=>this.selectMessage(message)}/>
                 {this.state.selectedMessage!==undefined && <LogMessage log={this.state.manager.messages[this.state.selectedMessage]}/>}
                 <LogCreation captain={this.state.manager.captains[this.state.selectedCaptain]} submit={input=>this.addLogMessage(input)}/>
-                <ActiveShipsView activeships={this.getActiveShips()}/>
+                <ActiveShipsView activeships={this.getActiveShips()} />
+                <UpdateShipStatus companyList={this.state.manager.companies} updateShipStatus={input => this.updateShipStatus(input.name, input.company, input.status)} />
                 <TrackingPage captain={this.state.manager.captains[this.state.selectedCaptain]} ships={this.state.manager.ships}/>
             </>
         )

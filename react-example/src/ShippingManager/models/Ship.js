@@ -12,4 +12,12 @@ export class Ship{
     getCompany() {
         return this.owningCompany;
     }
+
+    getStatus() {
+        return this.status;
+    }
+
+    setStatus(stat) {
+        this.status = stat;
+    }
 }

@@ -62,6 +62,11 @@ export class ShippingManager{
             }
         }
     }
+
+    updateShipStatus(name, company, status) {
+        var index = this.findShipIndex(name, company);
+        this.ships[index].setStatus(status);
+    }
     
     getCompanies(){
         return this.companies;
