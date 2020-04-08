@@ -5,12 +5,13 @@ export class ShipCreationForm extends React.Component{
     state = {
         name:"",
         owningCompany:"",
-        shipStatus:""
+        shipStatus:"",
+        location: ""
     }
 
     submit(){
-            let newShip = new Ship(this.state.name,this.state.owningCompany,this.state.shipStatus);
-            this.setState({name:"", owningCompany:"", shipStatus:""});
+            let newShip = new Ship(this.state.name,this.state.owningCompany,this.state.shipStatus, this.state.location);
+            this.setState({name:"", owningCompany:"", shipStatus:"", location:""});
             this.props.addship(newShip);
     }
 
@@ -55,6 +56,17 @@ export class ShipCreationForm extends React.Component{
                                 className="form-control"
                                 value={this.state.shipStatus}
                                 onChange={e=>this.setState({shipStatus:e.target.value})}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="status">
+                            Ship Location
+                        </label>
+                        <input type="text"
+                                id="status"
+                                name="status"
+                                className="form-control"
+                                value={this.state.location}
+                                onChange={e=>this.setState({location:e.target.value})}/>
                     </div>
                     <div className="form-group">
                         <button type="button" className="btn btn-primary mb-2" onClick={e=>this.submit()}>Create</button>
