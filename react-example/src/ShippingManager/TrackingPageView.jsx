@@ -19,7 +19,7 @@ export class TrackingPage extends React.Component{
                     <h1>Tracking Page</h1>
                 <div className="form-group">
                     <label htmlFor="companyShipList">
-                        Company Ship List
+                        Company Ship List (NOTE: You must select a captain and select the company he represents beforehand)
                     </label>
                     <select className="form-control"
                         id="companyShipList"
